@@ -4,12 +4,12 @@ This plugin for [Vue.js](http://vuejs.org) provides a simple "global store" that
 
 ## Installation
 
-1. Install via NPM
+#### 1) Install via NPM
 ```
 $ npm install vue-stash
 ```
 
-2. Install within project
+#### 2) Install within project
 ```
 import Vue from 'vue';
 import VueStash from 'vue-stash';
@@ -17,7 +17,7 @@ import VueStash from 'vue-stash';
 Vue.use(VueStash)
 ```
 
-3. Create a store object and set it on your root vue model.
+#### 3) Create a store object and set it on your root vue model.
 ```
 new Vue({
     el: '#app',
@@ -39,7 +39,7 @@ new Vue({
 })
 ```
 
-4. Add a 'store' property to your child components to access properties from your global store.
+#### 4) Add a 'store' property to your child components to access properties from your global store.
 ```
 Vue.component('user-card', {
     template: '<p>{{ user.name }}</p>',
