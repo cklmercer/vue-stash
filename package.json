@@ -1,6 +1,6 @@
 {
   "name": "vue-stash",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A Vue.js plugin that adds a global store, so that you may easily share data between components.",
   "main": "dist/index.js",
   "scripts": {
