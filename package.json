@@ -1,6 +1,6 @@
 {
   "name": "vue-stash",
-  "version": "0.0.1",
+  "version": "0.0.6",
   "description": "Global store vue.js plugin.",
   "main": "dist/index.js",
   "scripts": {
@@ -8,7 +8,7 @@
     "prepublish": "npm run compile"
   },
   "author": "Cody Mercer",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "devDependencies": {
     "babel-cli": "^6.10.1",
     "babel-preset-es2015": "^6.9.0"
