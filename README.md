@@ -4,12 +4,12 @@ A [Vue.js](http://vuejs.org) plugin that adds a global store, so that you may ea
 
 ## Installation
 
-#### 1) Install package via NPM
+##### 1) Install package via NPM
 ```
 $ npm install vue-stash
 ```
 
-#### 2) Install within project
+##### 2) Install within project
 ```
 import Vue from 'vue';
 import VueStash from 'vue-stash';
@@ -17,19 +17,30 @@ import VueStash from 'vue-stash';
 Vue.use(VueStash)
 ```
 
-#### 3) Create a store object and set it on your root vue model.
+or
+
+```
+import Vue from 'vue';
+window.Vue = Vue;
+require('vue-stash');
+```
+
+##### 3) Initialize your store object.
+A store object is nothing more than a simple Javascript object.
+Make sure you pre-initialize any data you want to be reactive.
+
 ```
 new Vue({
     el: '#app',
     data: {
         store: {
-            // pre-initialize reactive properties here
+            user: null
         }
     }
 })
 ```
 
-_Alternatively, you can import your store from another file._
+Alternatively, you can import your store from another file.
 ```
 import store from './store';
 
@@ -39,7 +50,14 @@ new Vue({
 })
 ```
 
-#### 4) Add a 'store' property to your child components to access properties from your global store.
+_store.js_
+```
+export default {
+    user: null
+}
+```
+
+##### 4) By adding a 'store' option to our child components we can access reactive data from the store.
 ```
 Vue.component('user-card', {
     template: '<p>{{ user.name }}</p>',
