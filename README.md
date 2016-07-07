@@ -1,6 +1,6 @@
 # vue-stash
 
-A [Vue.js](http://vuejs.org) plugin that adds a global store, so that you may easily share data between components.
+A [Vue.js](http://vuejs.org) plugin that makes it easy to share reactive data between components.
 
 ## Installation
 
