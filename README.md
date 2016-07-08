@@ -28,8 +28,7 @@ require('vue-stash');
 ## Usage
 
 ##### 1.) Initialize your store object.
-Your store object is nothing more than a simple Javascript object set on your root vue model.
-Make sure you pre-initialize any data you want to be reactive, just like always.
+Your store object is nothing more than a simple Javascript object set within your root vue model's data option; Think of it as your "shared data option". Make sure you pre-initialize any properties that you want to be reactive, just like always.
 
 ```
 new Vue({
