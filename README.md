@@ -68,7 +68,7 @@ Vue.component('user-card', {
 ```
 
 ##### 3.) Access the store directly.
-This plugin adds a new prototype property to Vue which allows any component to access the store via `vm.$store`.
+This plugin sets `Vue.prototype.$store` which allows any component to access the store via `vm.$store`.
 ```
 Vue.component('user-card', {
     ready() {
