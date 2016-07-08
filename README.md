@@ -28,7 +28,7 @@ require('vue-stash');
 ## Usage
 
 ##### 1.) Initialize your store object.
-Your store object is nothing more than a simple Javascript object set within your root vue model's data option; Think of it as your "shared data option". Make sure you pre-initialize any properties that you want to be reactive, just like always.
+Your store object is nothing more than a simple Javascript object set within your root vue model's `$data` option; Think of it as your "shared data option". Make sure you pre-initialize any properties that you want to be reactive, just like always.
 
 ```
 new Vue({
@@ -67,7 +67,7 @@ Vue.component('user-card', {
 });
 ```
 
-##### 3.) Access the store without setting a key in the store option.
+##### 3.) Access the store directly.
 This plugin adds a new prototype property to Vue which allows any component to access the store via `vm.$store`.
 ```
 Vue.component('user-card', {
