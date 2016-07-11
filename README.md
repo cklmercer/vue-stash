@@ -66,6 +66,7 @@ Vue.component('user-card', {
     store: ['user'],
     ready() {
        console.log(this.user.name); // logs: this.$root.store.user.name
+       this.user.name = 'cody'; // updates this.$root.store.user.name to 'cody'.
     }
 });
 ```
@@ -79,6 +80,7 @@ Vue.component('user-card', {
     },
     ready() {
         console.log(this.user.name); // logs: this.$root.store.user.name
+        this.user.name = 'cody'; // updates this.$root.store.user.name to 'cody'.
     }
 });
 ```
@@ -92,6 +94,7 @@ Vue.component('user-card', {
     },
     ready() {
         console.log(this.name); // logs: this.$root.store.user.name
+        this.name = 'cody'; // updates this.$root.store.user.name to 'cody'.
     }
 });
 ```
