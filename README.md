@@ -60,7 +60,7 @@ export default {
 
 ##### 2.) Add a "store" option to any child components that need to access data from the store.
 
-*Example 1: Array store*
+*Example 1: Simplest usage*
 ```
 Vue.component('user-card', {
     store: ['user'],
@@ -83,7 +83,7 @@ Vue.component('user-card', {
 });
 ```
 
-*Example 3: Nested object store*
+*Example 3: Access nested store property*
 
 ```
 Vue.component('user-card', {
@@ -96,7 +96,7 @@ Vue.component('user-card', {
 });
 ```
 
-*Example 4: Dynamic object store*
+*Example 4: Dynamic store access*
 
 ```
 Vue.component('user-card', {
@@ -107,6 +107,7 @@ Vue.component('user-card', {
     },
     ready() {
         console.log(this.name); // logs: this.$root.store.user.name
+        this.name = 'cody'; // updates this.$root.store.user.name to cody.
     }
 });
 ```
