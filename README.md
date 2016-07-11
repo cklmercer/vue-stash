@@ -35,7 +35,9 @@ new Vue({
     el: '#app',
     data: {
         store: {
-            user: null
+            user: {
+                name: 'cody'
+            }
         }
     }
 })
@@ -54,7 +56,9 @@ new Vue({
 _store.js_
 ```
 export default {
-    user: null
+    user: {
+        name: 'cody'
+    }
 }
 ```
 
@@ -65,8 +69,9 @@ export default {
 Vue.component('user-card', {
     store: ['user'],
     ready() {
-       console.log(this.user.name); // logs: this.$root.store.user.name
-       this.user.name = 'cody'; // updates this.$root.store.user.name to 'cody'.
+        console.log(this.user.name); // logs: 'cody'
+        this.user.name = 'john doe'; // updates this.$root.store.user.name to 'john doe'.
+        console.log(this.user.name); // logs: 'john doe'
     }
 });
 ```
@@ -79,8 +84,9 @@ Vue.component('user-card', {
         user: 'user'
     },
     ready() {
-        console.log(this.user.name); // logs: this.$root.store.user.name
-        this.user.name = 'cody'; // updates this.$root.store.user.name to 'cody'.
+        console.log(this.user.name); // logs: 'cody'
+        this.user.name = 'john doe'; // updates this.$root.store.user.name to 'john doe'.
+        console.log(this.user.name); // logs: 'john doe'
     }
 });
 ```
@@ -93,8 +99,9 @@ Vue.component('user-card', {
         name: 'user.name'
     },
     ready() {
-        console.log(this.name); // logs: this.$root.store.user.name
-        this.name = 'cody'; // updates this.$root.store.user.name to 'cody'.
+        console.log(this.name); // logs: 'cody'
+        this.name = 'john doe'; // updates this.$root.store.user.name to 'john doe'.
+        console.log(this.name); // logs: 'john doe'
     }
 });
 ```
@@ -109,8 +116,9 @@ Vue.component('user-card', {
         }
     },
     ready() {
-        console.log(this.name); // logs: this.$root.store.user.name
-        this.name = 'cody'; // updates this.$root.store.user.name to cody.
+        console.log(this.name); // logs: 'cody'
+        this.name = 'john doe'; // updates this.$root.store.user.name to john doe.
+        console.log(this.name); // logs: 'john doe'
     }
 });
 ```
@@ -122,7 +130,9 @@ This plugin sets `Vue.prototype.$store` which allows any component to access the
 ```
 Vue.component('user-card', {
     ready() {
-        console.log(this.$store.user.name)
+        console.log(this.$store.user.name); // logs: 'cody';
+        this.$store.user.name = 'john doe'; // updates this.$root.store.user.name to 'john doe';
+        console.log(this.$store.user.name); // logs: 'john doe';
     }
 });
 ```
