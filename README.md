@@ -59,13 +59,59 @@ export default {
 ```
 
 ##### 2.) Add a "store" option to any child components that need to access data from the store.
-The store option is an array of keys/strings that match the names of properties in your store.
+
+*Example 1: Array store*
 ```
 Vue.component('user-card', {
-    template: '<p>{{ user.name }}</p>',
-    store: ['user']
+    store: ['user'],
+    ready() {
+       console.log(this.user.name); // logs: this.$root.store.user.name
+    }
 });
 ```
+
+*Example 2: Object store*
+
+```
+Vue.component('user-card', {
+    store: {
+        user: 'user'
+    },
+    ready() {
+        console.log(this.user.name); // logs: this.$root.store.user.name
+    }
+});
+```
+
+*Example 3: Nested object store*
+
+```
+Vue.component('user-card', {
+    store: {
+        name: 'user.name'
+    },
+    ready() {
+        console.log(this.name); // logs: this.$root.store.user.name
+    }
+});
+```
+
+*Example 4: Dynamic object store*
+
+```
+Vue.component('user-card', {
+    store: {
+        name() {
+            return 'user.name';
+        }
+    },
+    ready() {
+        console.log(this.name); // logs: this.$root.store.user.name
+    }
+});
+```
+
+*Note: The end result of examples 1-4 are equivalent.*
 
 ##### 3.) Access the store directly.
 This plugin sets `Vue.prototype.$store` which allows any component to access the store via `vm.$store`.

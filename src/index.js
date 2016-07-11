@@ -26,18 +26,39 @@ function plugin(Vue) {
             // 1.) Check for a store "option" on the component.
             // 2.) Check for a store "object" on the root vue model.
             // 3.) Check to ensure the store "option" is not empty.
-            if (typeof this.$options.store !== 'undefined' && typeof this.$root.store !== 'undefined' && this.$root.store.length) {
+            if (typeof this.$options.store !== 'undefined' && typeof this.$root.store !== 'undefined') {
 
                 // Initialize the computed option if it hasn't already been initialized.
                 if (typeof this.$options.computed === 'undefined') {
                     this.$options.computed = {};
                 }
 
-                // Loop through the elements of the "store" option.
-                this.$options.store.forEach(property => {
-                    // Create a computed property using our StoreAccessor helper class.
-                    this.$options.computed[property] = new StoreAccessor(property);
-                });
+                // Check if the store option is a non-empty array.
+                if (Array.isArray(this.$options.store)) {
+
+                    // Loop through the elements of the "store" option.
+                    this.$options.store.forEach(property => {
+
+                        // Create a computed property using our StoreAccessor helper class.
+                        this.$options.computed[property] = new StoreAccessor(property);
+                    });
+                } else {
+
+                    // Loop through the store options.
+                    for (var key in this.$options.store) {
+
+                        if (typeof this.$options.store[key] == 'function') {
+
+                            // Handle a function
+                            this.$options.computed[key] = new StoreAccessor(this.$options.store[key]());
+
+                        } else if (typeof this.$options.store[key] == 'string') {
+
+                            // Handle a string
+                            this.$options.computed[key] = new StoreAccessor(this.$options.store[key]);
+                        }
+                    }
+                }
             }
         }
     });

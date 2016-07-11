@@ -1,15 +1,23 @@
-class StoreAccessor {
-    constructor(key) {
-        this.key = key;
-    }
+export default function(key) {
+    return {
+        get() {
+            return key.split('.').reduce((pValue, cValue) => {
+                return pValue[cValue];
+            }, this.$root.store)
+        },
 
-    get() {
-        return this.$root.store[this.key];
-    }
+        set(value) {
+            var path = key.split('.');
+            var length = path.length - 1;
+            var store = this.$root.store;
 
-    set(value) {
-        this.$root.store[this.key] = value;
+            for (var i = 0; i < length; i++) {
+                if (store.hasOwnProperty(path[i])) {
+                    store = store[path[i]];
+                }
+            }
+
+            store[path[i]] = value;
+        }
     }
 }
-
-export default StoreAccessor;
