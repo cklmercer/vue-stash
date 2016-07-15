@@ -22,10 +22,8 @@ function plugin(Vue) {
          * @return {void}
          */
         init() {
-            // Perform a series of checks:
             // 1.) Check for a store "option" on the component.
             // 2.) Check for a store "object" on the root vue model.
-            // 3.) Check to ensure the store "option" is not empty.
             if (typeof this.$options.store !== 'undefined' && typeof this.$root.store !== 'undefined') {
 
                 // Initialize the computed option if it hasn't already been initialized.
