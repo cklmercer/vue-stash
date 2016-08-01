@@ -17,11 +17,11 @@ function plugin(Vue) {
     Vue.mixin({
 
         /**
-         * The 'init' life-cycle hook.
+         * The 'beforeCreate' life-cycle hook.
          * 
          * @return {void}
          */
-        init() {
+        beforeCreate() {
             // 1.) Check for a store "option" on the component.
             // 2.) Check for a store "object" on the root vue model.
             if (typeof this.$options.store !== 'undefined' && typeof this.$root.store !== 'undefined') {
