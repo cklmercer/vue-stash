@@ -17,49 +17,55 @@ function plugin(Vue) {
     Vue.mixin({
 
         /**
-         * The 'beforeCreate' life-cycle hook.
+         * The 'beforeCreate' life-cycle hook for Vue 2.0
          * 
          * @return {void}
          */
         beforeCreate() {
-            // 1.) Check for a store "option" on the component.
-            // 2.) Check for a store "object" on the root vue model.
-            if (typeof this.$options.store !== 'undefined' && typeof this.$root.store !== 'undefined') {
+            registerStore(this)
+        },
 
-                // Initialize the computed option if it hasn't already been initialized.
-                if (typeof this.$options.computed === 'undefined') {
-                    this.$options.computed = {};
-                }
+        /**
+         * The 'init' life-cycle hook for Vue 1.0
+         *
+         * @return {void}
+         */
+        init() {
+            registerStore(this)
+        },
+    });
+}
 
-                // Check if the store option is a non-empty array.
-                if (Array.isArray(this.$options.store)) {
+function registerStore(vm) {
+    // 1.) Check for a store "option" on the component.
+    // 2.) Check for a store "object" on the root vue model.
+    if (typeof vm.$options.store !== 'undefined' && typeof vm.$root.store !== 'undefined') {
 
-                    // Loop through the elements of the "store" option.
-                    this.$options.store.forEach(property => {
+        // Initialize the computed option if it hasn't already been initialized.
+        if (typeof vm.$options.computed === 'undefined') {
+            vm.$options.computed = {};
+        }
 
-                        // Create a computed property using our StoreAccessor helper class.
-                        this.$options.computed[property] = new StoreAccessor(property);
-                    });
-                } else {
-
-                    // Loop through the store options.
-                    for (var key in this.$options.store) {
-
-                        if (typeof this.$options.store[key] == 'function') {
-
-                            // Handle a function
-                            this.$options.computed[key] = new StoreAccessor(this.$options.store[key]());
-
-                        } else if (typeof this.$options.store[key] == 'string') {
-
-                            // Handle a string
-                            this.$options.computed[key] = new StoreAccessor(this.$options.store[key]);
-                        }
-                    }
+        // Check if the store option is a non-empty array.
+        if (Array.isArray(vm.$options.store)) {
+            // Loop through the elements of the "store" option.
+            vm.$options.store.forEach(property => {
+                // Create a computed property using our StoreAccessor helper class.
+                vm.$options.computed[property] = new StoreAccessor(property);
+            });
+        } else {
+            // Loop through the store options.
+            for (var key in vm.$options.store) {
+                if (typeof vm.$options.store[key] == 'function') {
+                    // Handle a function
+                    vm.$options.computed[key] = new StoreAccessor(vm.$options.store[key]());
+                } else if (typeof vm.$options.store[key] == 'string') {
+                    // Handle a string
+                    vm.$options.computed[key] = new StoreAccessor(vm.$options.store[key]);
                 }
             }
         }
-    });
+    }
 }
 
 if (typeof window !== 'undefined' && window.Vue) {
