@@ -1,6 +1,6 @@
 {
   "name": "vue-stash",
-  "version": "v2.0.0-beta",
+  "version": "v2.0.1-beta",
   "description": "A Vue.js plugin that makes it easy to share reactive data between components.",
   "main": "dist/index.js",
   "scripts": {
