@@ -69,9 +69,9 @@ export default {
 Vue.component('user-card', {
     store: ['user'],
     ready() {
-        console.log(this.user.name); // logs: 'cody'
-        this.user.name = 'john doe'; // updates this.$root.store.user.name to 'john doe'.
-        console.log(this.user.name); // logs: 'john doe'
+        console.log(this.user.name); // 'cody'
+        this.user.name = 'john doe';
+        console.log(this.user.name); // 'john doe'
     }
 });
 ```
@@ -84,9 +84,9 @@ Vue.component('user-card', {
         user: 'user'
     },
     ready() {
-        console.log(this.user.name); // logs: 'cody'
-        this.user.name = 'john doe'; // updates this.$root.store.user.name to 'john doe'.
-        console.log(this.user.name); // logs: 'john doe'
+        console.log(this.user.name); // 'cody'
+        this.user.name = 'john doe';
+        console.log(this.user.name); // 'john doe'
     }
 });
 ```
@@ -99,9 +99,9 @@ Vue.component('user-card', {
         name: 'user.name'
     },
     ready() {
-        console.log(this.name); // logs: 'cody'
-        this.name = 'john doe'; // updates this.$root.store.user.name to 'john doe'.
-        console.log(this.name); // logs: 'john doe'
+        console.log(this.name); // 'cody'
+        this.name = 'john doe';
+        console.log(this.name); 'john doe'
     }
 });
 ```
@@ -116,9 +116,9 @@ Vue.component('user-card', {
         }
     },
     ready() {
-        console.log(this.name); // logs: 'cody'
-        this.name = 'john doe'; // updates this.$root.store.user.name to john doe.
-        console.log(this.name); // logs: 'john doe'
+        console.log(this.name); // 'cody'
+        this.name = 'john doe';
+        console.log(this.name); // 'john doe'
     }
 });
 ```
@@ -130,9 +130,9 @@ This plugin sets `Vue.prototype.$store` which allows any component to access the
 ```
 Vue.component('user-card', {
     ready() {
-        console.log(this.$store.user.name); // logs: 'cody';
-        this.$store.user.name = 'john doe'; // updates this.$root.store.user.name to 'john doe';
-        console.log(this.$store.user.name); // logs: 'john doe';
+        console.log(this.$store.user.name); // 'cody';
+        this.$store.user.name = 'john doe';
+        console.log(this.$store.user.name); // 'john doe';
     }
 });
 ```
