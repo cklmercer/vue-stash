@@ -101,7 +101,7 @@ Vue.component('user-card', {
     ready() {
         console.log(this.name); // 'cody'
         this.name = 'john doe';
-        console.log(this.name); 'john doe'
+        console.log(this.name); // 'john doe'
     }
 });
 ```
