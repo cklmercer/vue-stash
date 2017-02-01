@@ -138,7 +138,7 @@ Vue.component('user-card', {
 ```
 
 ## Demo
-If you'd like to demo `vue-stash` try [vue-stack-2.0](https://github.com/cklmercer/vue-stack-2.0)
+If you'd like to demo `vue-stash` try [vue-mix](https://github.com/cklmercer/vue-mix)
 
 ## License
 
