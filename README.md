@@ -2,6 +2,9 @@
 
 A [Vue.js](http://vuejs.org) plugin that makes it easy to share reactive data between components.
 
+This plugin is best suited for the rapid development of prototypes. This plugin is not intended to be used for complex applications.
+For complex applications I would recommend the official VueJS state management plugin, [Vuex](https://github.com/vuejs/vuex)
+
 ## Installation
 
 ##### 1.) Install package via NPM
@@ -68,7 +71,8 @@ export default {
 ```js
 Vue.component('user-card', {
     store: ['user'],
-    ready() {
+    // Use `ready` for Vue 1.x
+    mounted() {
         console.log(this.user.name); // 'cody'
         this.user.name = 'john doe';
         console.log(this.user.name); // 'john doe'
@@ -83,7 +87,8 @@ Vue.component('user-card', {
     store: {
         user: 'user'
     },
-    ready() {
+    // Use `ready` for Vue 1.x
+    mounted() {
         console.log(this.user.name); // 'cody'
         this.user.name = 'john doe';
         console.log(this.user.name); // 'john doe'
@@ -98,7 +103,8 @@ Vue.component('user-card', {
     store: {
         name: 'user.name'
     },
-    ready() {
+    // Use `ready` for Vue 1.x
+    mounted() {
         console.log(this.name); // 'cody'
         this.name = 'john doe';
         console.log(this.name); // 'john doe'
@@ -115,7 +121,8 @@ Vue.component('user-card', {
             return 'user.name';
         }
     },
-    ready() {
+    // Use `ready` for Vue 1.x
+    mounted() {
         console.log(this.name); // 'cody'
         this.name = 'john doe';
         console.log(this.name); // 'john doe'
@@ -129,7 +136,8 @@ Vue.component('user-card', {
 This plugin sets `Vue.prototype.$store` which allows any component to access the store via `vm.$store`.
 ```js
 Vue.component('user-card', {
-    ready() {
+    // Use `ready` for Vue 1.x
+    mounted() {
         console.log(this.$store.user.name); // 'cody';
         this.$store.user.name = 'john doe';
         console.log(this.$store.user.name); // 'john doe';
